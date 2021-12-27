@@ -48,7 +48,8 @@ class HaveIBeenPwnedConnector(BaseConnector):
             full_url = full_url + "?truncateResponse=false"
 
         try:
-            response = requests.get(full_url, params=params, headers=headers)  # nosemgrep: python.requests.best-practice.use-timeout.use-timeout
+            response = requests.get(full_url, params=params,
+                            headers=headers)  # nosemgrep: python.requests.best-practice.use-timeout.use-timeout
         except:
             return phantom.APP_ERROR, HAVEIBEENPWNED_REST_CALL_FAILURE
 
