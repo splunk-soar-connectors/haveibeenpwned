@@ -14,6 +14,7 @@
     "min_phantom_version": "5.0.0",
     "publisher": "Splunk",
     "package_name": "phantom_haveibeenpwned",
+    "fips_compliant": true,
     "license": "Copyright (c) 2016-2021 Splunk Inc.",
     "python_version": "3",
     "latest_tested_versions": [
