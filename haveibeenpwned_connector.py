@@ -1,6 +1,6 @@
 # File: haveibeenpwned_connector.py
 #
-# Copyright (c) 2016-2020 Splunk Inc.
+# Copyright (c) 2016-2021 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ class HaveIBeenPwnedConnector(BaseConnector):
             full_url = full_url + "?truncateResponse=false"
 
         try:
-            response = requests.get(full_url, params=params, headers=headers)
+            response = requests.get(full_url, params=params, headers=headers)  # nosemgrep: python.requests.best-practice.use-timeout.use-timeout
         except:
             return phantom.APP_ERROR, HAVEIBEENPWNED_REST_CALL_FAILURE
 
@@ -173,4 +173,4 @@ if __name__ == '__main__':
         # Dump the return value
         print(ret_val)
 
-    exit(0)
+    sys.exit(0)
