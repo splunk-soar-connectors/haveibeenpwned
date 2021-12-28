@@ -1,19 +1,30 @@
 # File: haveibeenpwned_connector.py
-# Copyright (c) 2016-2020 Splunk Inc.
 #
-# Licensed under Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)
-
+# Copyright (c) 2016-2021 Splunk Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions
+# and limitations under the License.
+#
+#
 # Phantom imports
-import phantom.app as phantom
-from phantom.base_connector import BaseConnector
-from phantom.action_result import ActionResult
 import sys
+
+import phantom.app as phantom
+import requests
+import simplejson as json
+from phantom.action_result import ActionResult
+from phantom.base_connector import BaseConnector
 
 # THIS Connector imports
 from haveibeenpwned_consts import *
-
-import requests
-import simplejson as json
 
 
 class HaveIBeenPwnedConnector(BaseConnector):
@@ -37,7 +48,8 @@ class HaveIBeenPwnedConnector(BaseConnector):
             full_url = full_url + "?truncateResponse=false"
 
         try:
-            response = requests.get(full_url, params=params, headers=headers)
+            response = requests.get(full_url, params=params,  # nosemgrep: python.requests.best-practice.use-timeout.use-timeout
+                            headers=headers)
         except:
             return phantom.APP_ERROR, HAVEIBEENPWNED_REST_CALL_FAILURE
 
@@ -162,4 +174,4 @@ if __name__ == '__main__':
         # Dump the return value
         print(ret_val)
 
-    exit(0)
+    sys.exit(0)
