@@ -1,6 +1,6 @@
 # File: haveibeenpwned_consts.py
 #
-# Copyright (c) 2016-2021 Splunk Inc.
+# Copyright (c) 2016-2022 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 HAVEIBEENPWNED_API_BASE_URL = "https://haveibeenpwned.com/api/v3/"
 HAVEIBEENPWNED_API_ENDPOINT_LOOKUP_EMAIL = "breachedaccount/{email}"
 HAVEIBEENPWNED_API_ENDPOINT_LOOKUP_DOMAIN = "breaches"
-HAVEIBEENPWNED_CONFIG_API_KEY = "api_key"
+HAVEIBEENPWNED_CONFIG_API_KEY = "api_key"  # pragma: allowlist secret
 HAVEIBEENPWNED_ACTION_PARAM_EMAIL = "email"
 HAVEIBEENPWNED_ACTION_PARAM_DOMAIN = "domain"
 HAVEIBEENPWNED_ACTION_PARAM_TRUNCATE = "truncate"

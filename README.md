@@ -2,16 +2,16 @@
 # Have I Been Pwned
 
 Publisher: Splunk  
-Connector Version: 2\.1\.1  
+Connector Version: 2\.1\.3  
 Product Vendor: Troy Hunt  
 Product Name: Have I Been Pwned  
 Product Version Supported (regex): "\.\*"  
-Minimum Product Version: 5\.0\.0  
+Minimum Product Version: 5\.1\.0  
 
 Queries Have I Been Pwned for data breach information with investigative actions
 
-[comment]: # " File: readme.md"
-[comment]: # "  Copyright (c) 2016-2021 Splunk Inc."
+[comment]: # " File: README.md"
+[comment]: # "  Copyright (c) 2016-2022 Splunk Inc."
 [comment]: # ""
 [comment]: # "Licensed under the Apache License, Version 2.0 (the 'License');"
 [comment]: # "you may not use this file except in compliance with the License."
