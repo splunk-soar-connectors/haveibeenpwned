@@ -83,7 +83,7 @@ class HaveIBeenPwnedConnector(BaseConnector):
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _lookup_domain(self, params):
-        
+
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(params)))
         domain = params[HAVEIBEENPWNED_ACTION_PARAM_DOMAIN]
