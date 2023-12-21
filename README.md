@@ -2,16 +2,16 @@
 # Have I Been Pwned
 
 Publisher: Splunk  
-Connector Version: 2\.1\.3  
+Connector Version: 2.1.4  
 Product Vendor: Troy Hunt  
 Product Name: Have I Been Pwned  
-Product Version Supported (regex): "\.\*"  
-Minimum Product Version: 5\.1\.0  
+Product Version Supported (regex): ".\*"  
+Minimum Product Version: 5.1.0  
 
 Queries Have I Been Pwned for data breach information with investigative actions
 
 [comment]: # " File: README.md"
-[comment]: # "  Copyright (c) 2016-2022 Splunk Inc."
+[comment]: # "  Copyright (c) 2016-2023 Splunk Inc."
 [comment]: # ""
 [comment]: # "Licensed under the Apache License, Version 2.0 (the 'License');"
 [comment]: # "you may not use this file except in compliance with the License."
@@ -40,7 +40,7 @@ The below configuration variables are required for this Connector to operate.  T
 
 VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
-**api\_key** |  required  | password | API key
+**api_key** |  required  | password | API key
 
 ### Supported Actions  
 [test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration  
@@ -69,37 +69,37 @@ Read only: **True**
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
 **email** |  required  | Email address | string |  `email` 
-**truncate** |  optional  | Truncate results to just domains \(Default\: False\) | string | 
+**truncate** |  optional  | Truncate results to just domains (Default: False) | string | 
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.status | string | 
-action\_result\.parameter\.email | string |  `email` 
-action\_result\.parameter\.truncate | string | 
-action\_result\.data\.\*\.AddedDate | string | 
-action\_result\.data\.\*\.BreachDate | string | 
-action\_result\.data\.\*\.DataClasses | string | 
-action\_result\.data\.\*\.Description | string | 
-action\_result\.data\.\*\.Domain | string |  `domain` 
-action\_result\.data\.\*\.IsActive | boolean | 
-action\_result\.data\.\*\.IsFabricated | boolean | 
-action\_result\.data\.\*\.IsRetired | boolean | 
-action\_result\.data\.\*\.IsSensitive | boolean | 
-action\_result\.data\.\*\.IsSpamList | boolean | 
-action\_result\.data\.\*\.IsVerified | boolean | 
-action\_result\.data\.\*\.LogoPath | string | 
-action\_result\.data\.\*\.LogoType | string | 
-action\_result\.data\.\*\.ModifiedDate | string | 
-action\_result\.data\.\*\.Name | string | 
-action\_result\.data\.\*\.PwnCount | numeric | 
-action\_result\.data\.\*\.Title | string | 
-action\_result\.data\.\*\.not\_found | string | 
-action\_result\.summary | string | 
-action\_result\.summary\.total\_breaches | numeric | 
-action\_result\.message | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric |   
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.status | string |  |   success  failed 
+action_result.parameter.email | string |  `email`  |   test@gmail.com 
+action_result.parameter.truncate | string |  |   False 
+action_result.data.\*.AddedDate | string |  |  
+action_result.data.\*.BreachDate | string |  |  
+action_result.data.\*.DataClasses | string |  |  
+action_result.data.\*.Description | string |  |  
+action_result.data.\*.Domain | string |  `domain`  |  
+action_result.data.\*.IsActive | boolean |  |  
+action_result.data.\*.IsFabricated | boolean |  |  
+action_result.data.\*.IsRetired | boolean |  |  
+action_result.data.\*.IsSensitive | boolean |  |  
+action_result.data.\*.IsSpamList | boolean |  |  
+action_result.data.\*.IsVerified | boolean |  |  
+action_result.data.\*.LogoPath | string |  |  
+action_result.data.\*.LogoType | string |  |  
+action_result.data.\*.ModifiedDate | string |  |  
+action_result.data.\*.Name | string |  |  
+action_result.data.\*.PwnCount | numeric |  |  
+action_result.data.\*.Title | string |  |  
+action_result.data.\*.not_found | string |  |  
+action_result.summary | string |  |  
+action_result.summary.total_breaches | numeric |  |   1 
+action_result.message | string |  |   Lookup Email succeeded 
+summary.total_objects | numeric |  |   1 
+summary.total_objects_successful | numeric |  |   1   
 
 ## action: 'lookup domain'
 Searches for breaches associated with a domain
@@ -113,29 +113,29 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **domain** |  required  | URL or domain to query | string |  `url`  `domain` 
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.status | string | 
-action\_result\.parameter\.domain | string |  `url`  `domain` 
-action\_result\.data\.\*\.AddedDate | string | 
-action\_result\.data\.\*\.BreachDate | string | 
-action\_result\.data\.\*\.DataClasses | string | 
-action\_result\.data\.\*\.Description | string | 
-action\_result\.data\.\*\.Domain | string |  `url`  `domain` 
-action\_result\.data\.\*\.IsActive | boolean | 
-action\_result\.data\.\*\.IsFabricated | boolean | 
-action\_result\.data\.\*\.IsRetired | boolean | 
-action\_result\.data\.\*\.IsSensitive | boolean | 
-action\_result\.data\.\*\.IsSpamList | boolean | 
-action\_result\.data\.\*\.IsVerified | boolean | 
-action\_result\.data\.\*\.LogoPath | string | 
-action\_result\.data\.\*\.LogoType | string | 
-action\_result\.data\.\*\.ModifiedDate | string | 
-action\_result\.data\.\*\.Name | string | 
-action\_result\.data\.\*\.PwnCount | numeric | 
-action\_result\.data\.\*\.Title | string | 
-action\_result\.summary | string | 
-action\_result\.summary\.total\_breaches | numeric | 
-action\_result\.message | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric | 
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.status | string |  |   success  failed 
+action_result.parameter.domain | string |  `url`  `domain`  |   google.com 
+action_result.data.\*.AddedDate | string |  |  
+action_result.data.\*.BreachDate | string |  |  
+action_result.data.\*.DataClasses | string |  |  
+action_result.data.\*.Description | string |  |  
+action_result.data.\*.Domain | string |  `url`  `domain`  |  
+action_result.data.\*.IsActive | boolean |  |  
+action_result.data.\*.IsFabricated | boolean |  |  
+action_result.data.\*.IsRetired | boolean |  |  
+action_result.data.\*.IsSensitive | boolean |  |  
+action_result.data.\*.IsSpamList | boolean |  |  
+action_result.data.\*.IsVerified | boolean |  |  
+action_result.data.\*.LogoPath | string |  |  
+action_result.data.\*.LogoType | string |  |  
+action_result.data.\*.ModifiedDate | string |  |  
+action_result.data.\*.Name | string |  |  
+action_result.data.\*.PwnCount | numeric |  |  
+action_result.data.\*.Title | string |  |  
+action_result.summary | string |  |  
+action_result.summary.total_breaches | numeric |  |   1 
+action_result.message | string |  |   Lookup Domain succeeded 
+summary.total_objects | numeric |  |   1 
+summary.total_objects_successful | numeric |  |   1 
