@@ -1,6 +1,6 @@
 # File: haveibeenpwned_connector.py
 #
-# Copyright (c) 2016-2022 Splunk Inc.
+# Copyright (c) 2016-2023 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -83,6 +83,8 @@ class HaveIBeenPwnedConnector(BaseConnector):
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _lookup_domain(self, params):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(params)))
         domain = params[HAVEIBEENPWNED_ACTION_PARAM_DOMAIN]
         if phantom.is_url(domain):
@@ -93,6 +95,7 @@ class HaveIBeenPwnedConnector(BaseConnector):
 
         endpoint = HAVEIBEENPWNED_API_ENDPOINT_LOOKUP_DOMAIN
         kwargs = {HAVEIBEENPWEND_PARAM_DOMAIN_KEY: domain}
+        self.debug_print("Make REST Call")
         ret_val, response = self._make_rest_call(endpoint, params=kwargs)
 
         if (phantom.is_fail(ret_val)):
@@ -107,12 +110,15 @@ class HaveIBeenPwnedConnector(BaseConnector):
         return action_result.set_status(phantom.APP_SUCCESS, HAVEIBEENPWNED_LOOKUP_DOMAIN_SUCCESS)
 
     def _lookup_email(self, params):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
         action_result = self.add_action_result(ActionResult(dict(params)))
 
         email = params[HAVEIBEENPWNED_ACTION_PARAM_EMAIL]
         truncate = params.get(HAVEIBEENPWNED_ACTION_PARAM_TRUNCATE, "False") == "True"
         endpoint = HAVEIBEENPWNED_API_ENDPOINT_LOOKUP_EMAIL.format(email=email)
 
+        self.debug_print("Make REST Call")
         ret_val, response = self._make_rest_call(endpoint, truncate=truncate)
 
         if (phantom.is_fail(ret_val)):
