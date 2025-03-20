@@ -1,6 +1,6 @@
 # File: haveibeenpwned_connector.py
 #
-# Copyright (c) 2016-2023 Splunk Inc.
+# Copyright (c) 2016-2025 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,9 +28,8 @@ from haveibeenpwned_consts import *
 
 
 class HaveIBeenPwnedConnector(BaseConnector):
-
     def __init__(self):
-        super(HaveIBeenPwnedConnector, self).__init__()
+        super().__init__()
 
     def initialize(self):
         config = self.get_config()
@@ -48,8 +47,11 @@ class HaveIBeenPwnedConnector(BaseConnector):
             full_url = full_url + "?truncateResponse=false"
 
         try:
-            response = requests.get(full_url, params=params,  # nosemgrep: python.requests.best-practice.use-timeout.use-timeout
-                            headers=headers)
+            response = requests.get(
+                full_url,
+                params=params,  # nosemgrep: python.requests.best-practice.use-timeout.use-timeout
+                headers=headers,
+            )
         except:
             return phantom.APP_ERROR, HAVEIBEENPWNED_REST_CALL_FAILURE
 
@@ -74,8 +76,8 @@ class HaveIBeenPwnedConnector(BaseConnector):
 
         ret_val, response = self._make_rest_call(endpoint, truncate=True)
 
-        if (phantom.is_fail(ret_val)):
-            self.save_progress("Test Connectivity Failed. Error: {0}".format(response))
+        if phantom.is_fail(ret_val):
+            self.save_progress(f"Test Connectivity Failed. Error: {response}")
             return action_result.get_status()
 
         self.save_progress("Login to Have I Been Pwned server is successful")
@@ -83,8 +85,7 @@ class HaveIBeenPwnedConnector(BaseConnector):
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _lookup_domain(self, params):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
         action_result = self.add_action_result(ActionResult(dict(params)))
         domain = params[HAVEIBEENPWNED_ACTION_PARAM_DOMAIN]
         if phantom.is_url(domain):
@@ -98,20 +99,18 @@ class HaveIBeenPwnedConnector(BaseConnector):
         self.debug_print("Make REST Call")
         ret_val, response = self._make_rest_call(endpoint, params=kwargs)
 
-        if (phantom.is_fail(ret_val)):
+        if phantom.is_fail(ret_val):
             return action_result.set_status(phantom.APP_ERROR, HAVEIBEENPWNED_REST_CALL_ERR, response)
 
         for item in response:
             action_result.add_data(item)
 
-        action_result.set_summary(
-            {HAVEIBEENPWNED_TOTAL_BREACHES: len(response)})
+        action_result.set_summary({HAVEIBEENPWNED_TOTAL_BREACHES: len(response)})
 
         return action_result.set_status(phantom.APP_SUCCESS, HAVEIBEENPWNED_LOOKUP_DOMAIN_SUCCESS)
 
     def _lookup_email(self, params):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
         action_result = self.add_action_result(ActionResult(dict(params)))
 
         email = params[HAVEIBEENPWNED_ACTION_PARAM_EMAIL]
@@ -121,7 +120,7 @@ class HaveIBeenPwnedConnector(BaseConnector):
         self.debug_print("Make REST Call")
         ret_val, response = self._make_rest_call(endpoint, truncate=truncate)
 
-        if (phantom.is_fail(ret_val)):
+        if phantom.is_fail(ret_val):
             return action_result.set_status(phantom.APP_ERROR, HAVEIBEENPWNED_REST_CALL_ERR, response)
 
         for item in response:  # Response ends up being a list
@@ -130,26 +129,24 @@ class HaveIBeenPwnedConnector(BaseConnector):
         if "not_found" in response[0]:
             action_result.set_summary({HAVEIBEENPWNED_TOTAL_BREACHES: 0})
         else:
-            action_result.set_summary(
-                {HAVEIBEENPWNED_TOTAL_BREACHES: len(response)})
+            action_result.set_summary({HAVEIBEENPWNED_TOTAL_BREACHES: len(response)})
 
         return action_result.set_status(phantom.APP_SUCCESS, HAVEIBEENPWNED_LOOKUP_EMAIL_SUCCESS)
 
     def handle_action(self, params):
-
         action = self.get_action_identifier()
         ret_val = phantom.APP_SUCCESS
-        if (action == ACTION_ID_LOOKUP_DOMAIN):
+        if action == ACTION_ID_LOOKUP_DOMAIN:
             ret_val = self._lookup_domain(params)
-        elif (action == ACTION_ID_LOOKUP_EMAIL):
+        elif action == ACTION_ID_LOOKUP_EMAIL:
             ret_val = self._lookup_email(params)
-        elif (action == ACTION_ID_TEST_CONNECTIVITY):
+        elif action == ACTION_ID_TEST_CONNECTIVITY:
             ret_val = self._handle_test_connectivity(params)
 
         return ret_val
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """ Code that is executed when run in standalone debug mode
     for .e.g:
     python2.7 ./zendesk_connector.py /tmp/zendesk_test_create_ticket.json
@@ -166,7 +163,7 @@ if __name__ == '__main__':
         # Load the input json file
         in_json = f.read()
         in_json = json.loads(in_json)
-        print(json.dumps(in_json, indent=' ' * 4))
+        print(json.dumps(in_json, indent=" " * 4))
 
         # Create the connector class object
         connector = HaveIBeenPwnedConnector()
