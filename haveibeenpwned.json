@@ -16,7 +16,7 @@
     "package_name": "phantom_haveibeenpwned",
     "fips_compliant": true,
     "license": "Copyright (c) 2016-2025 Splunk Inc.",
-    "python_version": "3",
+    "python_version": "3.9, 3.13",
     "latest_tested_versions": [
         "API v3 2020-05-22"
     ],
