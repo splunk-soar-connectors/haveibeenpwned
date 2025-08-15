@@ -393,19 +393,9 @@
         ]
     },
     "pip39_dependencies": {
-        "wheel": [
-            {
-                "module": "simplejson",
-                "input_file": "wheels/py39/simplejson-3.20.1-cp39-cp39-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl"
-            }
-        ]
+        "wheel": []
     },
     "pip313_dependencies": {
-        "wheel": [
-            {
-                "module": "simplejson",
-                "input_file": "wheels/py313/simplejson-3.20.1-cp313-cp313-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl"
-            }
-        ]
+        "wheel": []
     }
 }
