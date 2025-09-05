@@ -1,7 +1,7 @@
 # Have I Been Pwned
 
 Publisher: Splunk <br>
-Connector Version: 2.1.4 <br>
+Connector Version: 2.1.5 <br>
 Product Vendor: Troy Hunt <br>
 Product Name: Have I Been Pwned <br>
 Minimum Product Version: 5.1.0
