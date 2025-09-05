@@ -16,7 +16,7 @@
     "package_name": "phantom_haveibeenpwned",
     "fips_compliant": true,
     "license": "Copyright (c) 2016-2025 Splunk Inc.",
-    "python_version": "3",
+    "python_version": "3.9, 3.13",
     "latest_tested_versions": [
         "API v3 2020-05-22"
     ],
@@ -393,11 +393,9 @@
         ]
     },
     "pip39_dependencies": {
-        "wheel": [
-            {
-                "module": "simplejson",
-                "input_file": "wheels/py39/simplejson-3.17.2-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-            }
-        ]
+        "wheel": []
+    },
+    "pip313_dependencies": {
+        "wheel": []
     }
 }

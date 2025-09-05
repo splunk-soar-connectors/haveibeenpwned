@@ -1,9 +1,9 @@
 # Have I Been Pwned
 
-Publisher: Splunk \
-Connector Version: 2.1.4 \
-Product Vendor: Troy Hunt \
-Product Name: Have I Been Pwned \
+Publisher: Splunk <br>
+Connector Version: 2.1.4 <br>
+Product Vendor: Troy Hunt <br>
+Product Name: Have I Been Pwned <br>
 Minimum Product Version: 5.1.0
 
 Queries Have I Been Pwned for data breach information with investigative actions
@@ -28,15 +28,15 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 
 ### Supported Actions
 
-[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration \
-[lookup email](#action-lookup-email) - Searches for breaches associated with an email \
+[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration <br>
+[lookup email](#action-lookup-email) - Searches for breaches associated with an email <br>
 [lookup domain](#action-lookup-domain) - Searches for breaches associated with a domain
 
 ## action: 'test connectivity'
 
 Validate the asset configuration for connectivity using supplied configuration
 
-Type: **test** \
+Type: **test** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -51,7 +51,7 @@ No Output
 
 Searches for breaches associated with an email
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -96,7 +96,7 @@ summary.total_objects_successful | numeric | | 1 |
 
 Searches for breaches associated with a domain
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 #### Action Parameters
