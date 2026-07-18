@@ -1,4 +1,4 @@
 **Unreleased**
 
-* - Updated connector development tooling.
+* Updated connector development tooling.
 * Encoded email addresses as a single URL path segment before querying the Have I Been Pwned API.
