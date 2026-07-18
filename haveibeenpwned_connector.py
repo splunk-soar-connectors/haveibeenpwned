@@ -16,6 +16,7 @@
 #
 # Phantom imports
 import sys
+from urllib.parse import quote
 
 import phantom.app as phantom
 import requests
@@ -115,7 +116,7 @@ class HaveIBeenPwnedConnector(BaseConnector):
 
         email = params[HAVEIBEENPWNED_ACTION_PARAM_EMAIL]
         truncate = params.get(HAVEIBEENPWNED_ACTION_PARAM_TRUNCATE, "False") == "True"
-        endpoint = HAVEIBEENPWNED_API_ENDPOINT_LOOKUP_EMAIL.format(email=email)
+        endpoint = HAVEIBEENPWNED_API_ENDPOINT_LOOKUP_EMAIL.format(email=quote(email, safe=""))
 
         self.debug_print("Make REST Call")
         ret_val, response = self._make_rest_call(endpoint, truncate=truncate)
