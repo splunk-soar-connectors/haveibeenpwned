@@ -1,7 +1,57 @@
+[project]
+name = "haveibeenpwned"
+version = "2.1.6"
+description = "Queries Have I Been Pwned for data breach information with investigative actions"
+license = "Copyright (c) 2016-2026 Splunk Inc."
+requires-python = ">=3.13, <3.15"
+authors = [
+]
+dependencies = [
+    "splunk-soar-sdk==6.1.2",
+    "httpx==0.28.1",
+]
+
+[tool.soar.app]
+main_module = "src.app:app"
+
+### YOU SHOULD NOT NEED TO TOUCH ANYTHING BELOW THIS LINE ###
+
+[dependency-groups]
+dev = [
+    "coverage>=7.6.7,<8",
+    "mypy>=1.2.0,<2",
+    "pre-commit>=4.2.0,<5",
+    "pytest>=7.4.2,<8",
+    "pytest-mock>=3.14.0,<4",
+    "pytest-cov>=6,<8",
+    "pytest-xdist>=3.6,<4",
+    "pytest-watch>=4.2.0,<5",
+    "ruff>=0.11.6,<1",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.python.org/simple"
+
+[tool.uv]
+environments = [
+    "sys_platform == 'linux' and platform_machine == 'x86_64' and python_version == '3.13'",
+    "sys_platform == 'linux' and platform_machine == 'aarch64' and python_version == '3.13'",
+    "sys_platform == 'darwin' and platform_machine == 'x86_64' and python_version == '3.13'",
+    "sys_platform == 'darwin' and platform_machine == 'arm64' and python_version == '3.13'",
+    "sys_platform == 'linux' and platform_machine == 'x86_64' and python_version == '3.14'",
+    "sys_platform == 'linux' and platform_machine == 'aarch64' and python_version == '3.14'",
+    "sys_platform == 'darwin' and platform_machine == 'x86_64' and python_version == '3.14'",
+    "sys_platform == 'darwin' and platform_machine == 'arm64' and python_version == '3.14'",
+]
+required-environments = [
+    "sys_platform == 'linux' and platform_machine == 'x86_64' and python_version == '3.13'",
+    "sys_platform == 'linux' and platform_machine == 'x86_64' and python_version == '3.14'",
+]
+
 # Ruff linting
 [tool.ruff]
 line-length = 145
-target-version = "py39"
+target-version = "py313"
 
 [tool.ruff.lint]
 select = [ # Auto-fixable rules only
@@ -77,3 +127,6 @@ ignore-patterns = [
     "*.md",
     "*.svg"
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
